@@ -5,10 +5,20 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener("click", () => {
-     setOpen(false);
-    });
-  }, []);
+    const onBodyClick = (e) => {
+      if (ref.current.contains(e.target)) {
+        return;
+      }
+      setOpen(false);
+    };
+    document.body.addEventListener('click', onBodyClick, { capture: true });
+        return () => {
+  document.body.removeEventListener("click", onBodyClick, {
+    capture: true,
+  });
+};
+}, [] );
+
 
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
@@ -20,24 +30,25 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
         className="item"
         onClick={() => onSelectedChange(option)}
       >
-        {option.label}
+      {option.label}
       </div>
     );
   });
-  console.log(ref.current);
-  
+
   return (
     <div ref={ref} className="ui form">
       <div className="field">
         <label className="label"> Select a Color!</label>
+
         <div
           onClick={() => setOpen(!open)}
-          className={`ui selection dropdown ${open? 'visible active':''}`}
+          className={`ui selection dropdown ${open?'visible active':''}`}
         >
           <i className="dropdown icon"></i>
           <div className="text">{selected.label}</div>
+          
           <div className={`menu ${open ? 'visible transition' : ''}`}>
-            {" "}
+            
             {renderedOptions}
           </div>
         </div>
