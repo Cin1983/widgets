@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import GoogleTranslate from "./apis/GoogleTranslate";
 // import Accordion from "./Accordion";
 // import Search from "./search/Search";
-import Dropdown from './dropdown/Dropdown';
-
+import Dropdown from "./dropdown/Dropdown";
 
 // const items = [
 //   {
@@ -21,34 +21,27 @@ import Dropdown from './dropdown/Dropdown';
 
 const options = [
   {
-    label: 'The ColorRed',
-    value: 'red',
+    label: "The ColorRed",
+    value: "red",
   },
   {
-    label: 'Fine Lady Pink',
-    value: 'pink',
+    label: "Fine Lady Pink",
+    value: "pink",
   },
   {
-    label: 'Desire Orange',
-    value: 'orange',
+    label: "Desire Orange",
+    value: "orange",
   },
 ];
 
-const App= () => {
+const App = () => {
   const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
 
   return (
     <div>
-      <button onClick={()=>setShowDropdown (!showDropdown)}>Toggle Dropdown</button>
-      {showDropdown ?
-        <Dropdown
-          selected={selected}
-          onSelectedChange={setSelected}
-          options={options} />: null
-      }
+      <GoogleTranslate />
     </div>
   );
 };
 
-export default App
+export default App;
