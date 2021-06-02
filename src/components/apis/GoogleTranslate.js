@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Dropdown from "../dropdown/Dropdown";
 import Convert from "../Convert";
 
-// AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM
 
 
 
@@ -18,7 +17,7 @@ const options = [
   },
   {
     label: "Hindi",
-    value: "ar",
+    value: "hi",
   },
   {
     label: "Japanese",
